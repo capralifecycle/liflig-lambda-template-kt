@@ -1,0 +1,141 @@
+#!/usr/bin/env groovy
+
+// See https://github.com/capralifecycle/jenkins-pipeline-library
+@Library("cals") _
+
+def pipelines = new no.capraconsulting.buildtools.lifligcdkpipelines.LifligCdkPipelines()
+def webapp = new no.capraconsulting.buildtools.cdk.Webapp()
+def utils = new no.capraconsulting.buildtools.Utils()
+
+def artifactsBucketName = "REPLACEME"
+def artifactsRoleArn = "REPLACEME"
+// The generated fat jar in target/
+def artifactFilename = "liflig-lambda-baseline.jar"
+// For the CDK pipeline variable. Must be unique among all apps,
+// and match what is used in aws-infrastructure repo
+// as "dev${serviceName}S3key" and "prod${serviceName}S3key"
+def serviceName = "REPLACEME"
+// The project key in Sonarcloud
+def sonarCloudProjectKey = "REPLACEME"
+
+buildConfig(
+  jobProperties: [
+    parameters([
+      booleanParam(
+        defaultValue: false,
+        description: "Skip branch check - force deploy to DEV",
+        name: "devOverrideBranchCheck"
+      ),
+    ])
+  ],
+  slack: [channel: "#REPLACEME"],
+) {
+  dockerNode {
+    checkout scm
+
+    insideToolImage("maven:3-jdk-11-debian", [insideArgs: "-e HOME"]) {
+      withMavenSettings {
+        stage('Build and Test project') {
+          sh "mvn -s \$MAVEN_SETTINGS -B verify -U"
+          stash name: "build", includes: "target/${artifactFilename}"
+        }
+
+        insideSonarScanner {
+          analyzeSonarCloudForMaven([
+            'sonar.organization': 'capralifecycle',
+            'sonar.projectKey': sonarCloudProjectKey,
+          ])
+        }
+      }
+    }
+
+    def s3Key
+    stage("Upload to S3") {
+      unstash name: "build"
+      dir("target") {
+        s3Key = uploadCdkArtifactFile(
+          artifactFile: artifactFilename,
+          serviceName: serviceName,
+          artifactsBucketName: artifactsBucketName,
+          artifactsRoleArn: artifactsRoleArn,
+        )
+        echo "S3 key is: $s3Key"
+      }
+    }
+
+    // CDK App - see https://github.com/capralifecycle/liflig-cdk-app-reference
+
+    def deployDev = params.devOverrideBranchCheck || env.BRANCH_NAME == "master"
+
+    if (deployDev) {
+      stage("Trigger dev pipeline") {
+        pipelines.configureVariablesAndTrigger(
+          artifactsRoleArn: artifactsRoleArn,
+          artifactsBucketName: artifactsBucketName,
+          pipelineName: "REPLACEME",
+          variables: [
+            ("dev${serviceName}S3key" as String): s3Key, // Must use String, not GString. Map lookup results in null values with GString
+          ],
+          variablesVersion: "v2",
+          region: "eu-west-1",
+        )
+      }
+    }
+
+
+    def deployProd = env.BRANCH_NAME == "master"
+    if (deployProd) {
+      stage("Trigger prod pipeline") {
+        pipelines.configureVariablesAndTrigger(
+          artifactsRoleArn: artifactsRoleArn,
+          artifactsBucketName: artifactsBucketName,
+          pipelineName: "REPLACEME",
+          variables: [
+            ("prod${serviceName}S3key" as String): s3Key, // Must use String, not GString. Map lookup results in null values with GString
+          ],
+          variablesVersion: "v2",
+          region: "eu-west-1",
+        )
+      }
+    }
+  }
+
+}
+
+// TODO: add to jenkins pipeline library if stable
+//  https://github.com/capralifecycle/jenkins-pipeline-library/tree/master/vars
+
+/**
+ * Make sure the artifactFile uses a filename that is safe for S3.
+ * The easiest way is to not use special characters and symbols.
+ * Letters, numbers and period are safe.
+ * https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html
+ */
+def uploadCdkArtifactFile(Map config) {
+  def artifactFile = require(config, "artifactFile")
+  def artifactsBucketName = require(config, "artifactsBucketName")
+  def artifactsRoleArn = require(config, "artifactsRoleArn")
+  def serviceName = require(config, "serviceName")
+
+  def sha256 = sh([
+    returnStdout: true,
+    script      : "sha256sum ${artifactFile} | awk '{print \$1}'"
+  ]).trim()
+
+  def s3Key = "builds/${serviceName}/${sha256}-${artifactFile}"
+  def s3Url = "s3://$artifactsBucketName/$s3Key"
+
+  withAwsRole(artifactsRoleArn) {
+    sh "aws s3 cp ${artifactFile} $s3Url"
+  }
+
+  s3Key
+}
+
+// Used in uploadCdkArtifactFile
+def require(Map config, String name) {
+  if (!config.containsKey(name)) {
+    throw new Exception("Missing $name")
+  }
+  return config[name]
+}

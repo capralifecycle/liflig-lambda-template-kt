@@ -1,0 +1,7 @@
+.idea/
+*.iml
+target/
+config_override/
+overrides.properties
+*log.json
+*.DS_Store
