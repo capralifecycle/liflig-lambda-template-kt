@@ -16,7 +16,7 @@ buildConfig() {
         insideSonarScanner {
           analyzeSonarCloudForMaven([
             'sonar.organization': 'capralifecycle',
-            'sonar.projectKey': 'capralifecycle_liflig-lambda-baseline',
+            'sonar.projectKey': 'capralifecycle_liflig-lambda-template-kt',
           ])
         }
       }
