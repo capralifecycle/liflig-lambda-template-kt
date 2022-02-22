@@ -4,7 +4,6 @@ import com.amazonaws.services.lambda.runtime.events.SQSEvent
 import mu.KotlinLogging
 
 private val log = KotlinLogging.logger { }
-private val config = Config
 
 /**
  * Entrypoint for AWS Lambda.
