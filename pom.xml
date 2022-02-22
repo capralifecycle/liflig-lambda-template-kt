@@ -39,7 +39,7 @@
     <kotlin.version>1.6.10</kotlin.version>
 
     <!-- application -->
-    <liflig.properties.version>2.20220116.165452</liflig.properties.version>
+    <liflig.properties.version>2.20220211.162248</liflig.properties.version>
     <aws-lambda-events.version>3.11.0</aws-lambda-events.version>
     <kotlin-logging.version>2.1.21</kotlin-logging.version>
     <logback.version>1.2.10</logback.version>
