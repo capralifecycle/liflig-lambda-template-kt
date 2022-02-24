@@ -11,5 +11,19 @@ import no.liflig.properties.stringNotEmpty
 object Config {
   private val properties = loadProperties()
 
+  val build = Build(
+    timestamp = properties.stringNotNull("build.timestamp"),
+    commit = properties.stringNotNull("build.commit"),
+    branch = properties.stringNotNull("build.branch"),
+    buildNumber = properties.intRequired("build.number")
+  )
+  
   val exampleProp = properties.stringNotEmpty("example.prop")
 }
+
+data class Build(
+  val timestamp: String,
+  val commit: String,
+  val branch: String,
+  val buildNumber: Int,
+)
