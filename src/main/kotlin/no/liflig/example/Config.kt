@@ -2,6 +2,10 @@ package no.liflig.example
 
 import no.liflig.properties.loadProperties
 import no.liflig.properties.stringNotEmpty
+import no.liflig.properties.intRequired
+import no.liflig.properties.loadProperties
+import no.liflig.properties.stringNotEmpty
+import no.liflig.properties.stringNotNull
 
 /**
  * Loads config using Liflig Properties
