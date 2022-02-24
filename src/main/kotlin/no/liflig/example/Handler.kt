@@ -11,5 +11,5 @@ private val log = KotlinLogging.logger { }
  */
 @Suppress("unused") // Called by AWS Lambda
 fun handler(sqsEvent: SQSEvent) {
-  log.info(Markers.append("build", config.build)) { "Hello ${Config.exampleProp}" }
+  log.info(Markers.append("build", Config.build)) { "Hello ${Config.exampleProp}" }
 }
