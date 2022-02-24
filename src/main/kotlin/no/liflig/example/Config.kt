@@ -1,7 +1,5 @@
 package no.liflig.example
 
-import no.liflig.properties.loadProperties
-import no.liflig.properties.stringNotEmpty
 import no.liflig.properties.intRequired
 import no.liflig.properties.loadProperties
 import no.liflig.properties.stringNotEmpty
@@ -21,7 +19,7 @@ object Config {
     branch = properties.stringNotNull("build.branch"),
     buildNumber = properties.intRequired("build.number")
   )
-  
+
   val exampleProp = properties.stringNotEmpty("example.prop")
 }
 
