@@ -31,20 +31,31 @@ buildConfig(
   slack: [channel: "#REPLACEME"],
 ) {
   dockerNode {
-    checkout scm
+    def commit
+    stage("Checkout source") {
+      def gitVars = checkout scm
+      commit = gitVars.GIT_COMMIT
+    }
 
     insideToolImage("maven:3-jdk-11-debian", [insideArgs: "-e HOME"]) {
       withMavenSettings {
-        stage('Build and Test project') {
-          sh "mvn -s \$MAVEN_SETTINGS -B verify -U"
-          stash name: "build", includes: "target/${artifactFilename}"
-        }
+        withEnv(["GIT_COMMIT=$commit"]) {
+          stage("Dependency analysis") {
+            echo "Checking that no snapshot dependencies are used"
+            sh "mvn -s \$MAVEN_SETTINGS org.apache.maven.plugins:maven-enforcer-plugin:3.0.0:enforce -Drules=requireReleaseDeps"
+          }
+          
+          stage('Build and Test project') {
+            sh "mvn -s \$MAVEN_SETTINGS -B verify -U"
+            stash name: "build", includes: "target/${artifactFilename}"
+          }
 
-        insideSonarScanner {
-          analyzeSonarCloudForMaven([
-            'sonar.organization': 'capralifecycle',
-            'sonar.projectKey': sonarCloudProjectKey,
-          ])
+          insideSonarScanner {
+            analyzeSonarCloudForMaven([
+              'sonar.organization': 'capralifecycle',
+              'sonar.projectKey': sonarCloudProjectKey,
+            ])
+          }
         }
       }
     }
