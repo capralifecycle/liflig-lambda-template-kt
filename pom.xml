@@ -36,7 +36,7 @@
     <kotlin.code.style>official</kotlin.code.style>
     <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-    <kotlin.version>1.6.20</kotlin.version>
+    <kotlin.version>1.6.21</kotlin.version>
 
     <!-- application -->
     <liflig.properties.version>2.20220422.174734</liflig.properties.version>
