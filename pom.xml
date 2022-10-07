@@ -45,7 +45,7 @@
     <logback.version>1.4.3</logback.version>
     <jackson.version>2.13.4</jackson.version>
     <logstash.version>7.2</logstash.version>
-    <slf4j.version>1.7.36</slf4j.version>
+    <slf4j.version>2.0.3</slf4j.version>
 
     <!--testing-->
     <assertj.version>3.23.1</assertj.version>
