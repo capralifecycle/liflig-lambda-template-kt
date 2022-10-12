@@ -7,28 +7,34 @@ def pipelines = new no.capraconsulting.buildtools.lifligcdkpipelines.LifligCdkPi
 def webapp = new no.capraconsulting.buildtools.cdk.Webapp()
 def utils = new no.capraconsulting.buildtools.Utils()
 
-def artifactsBucketName = "REPLACEME"
-def artifactsRoleArn = "REPLACEME"
+def artifactsBucketName = "<build-artifacts bucket name>"
+def artifactsRoleArn = "arn:aws:iam::<build artifacts jenkins role>"
 // The generated fat jar in target/
 def artifactFilename = "liflig-lambda-baseline.jar"
 // For the CDK pipeline variable. Must be unique among all apps,
 // and match what is used in aws-infrastructure repo
 // as "dev${serviceName}S3key" and "prod${serviceName}S3key"
-def serviceName = "REPLACEME"
+def serviceName = "<ServiceName>"
 // The project key in Sonarcloud
-def sonarCloudProjectKey = "REPLACEME"
+def awsDevPipelineName = "<customer>-apps-dev"
+def awsProdPipelineName = "<customer>-apps-prod"
+
+def notificationSlackChannel = "#<customer>-dev-info"
+def sonarcloudKey = "capralifecycle_<repo-name>"
+
+///// No need to modify below here!
 
 buildConfig(
   jobProperties: [
     parameters([
       booleanParam(
         defaultValue: false,
-        description: "Skip branch check - force deploy to DEV",
-        name: "devOverrideBranchCheck"
+        description: 'Skip branch check - force deploy to DEV',
+        name: 'devOverrideBranchCheck'
       ),
     ])
   ],
-  slack: [channel: "#REPLACEME"],
+  slack: [channel: notificationSlackChannel],
 ) {
   dockerNode {
     def commit
@@ -42,9 +48,9 @@ buildConfig(
         withEnv(["GIT_COMMIT=$commit"]) {
           stage("Dependency analysis") {
             echo "Checking that no snapshot dependencies are used"
-            sh "mvn -s \$MAVEN_SETTINGS org.apache.maven.plugins:maven-enforcer-plugin:3.0.0:enforce -Drules=requireReleaseDeps"
+            sh "mvn -s \$MAVEN_SETTINGS org.apache.maven.plugins:maven-enforcer-plugin:3.0.0-M3:enforce -Drules=requireReleaseDeps"
           }
-          
+
           stage('Build and Test project') {
             sh "mvn -s \$MAVEN_SETTINGS -B verify -U"
             stash name: "build", includes: "target/${artifactFilename}"
@@ -53,7 +59,7 @@ buildConfig(
           insideSonarScanner {
             analyzeSonarCloudForMaven([
               'sonar.organization': 'capralifecycle',
-              'sonar.projectKey': sonarCloudProjectKey,
+              'sonar.projectKey': sonarcloudKey,
             ])
           }
         }
@@ -83,7 +89,7 @@ buildConfig(
         pipelines.configureVariablesAndTrigger(
           artifactsRoleArn: artifactsRoleArn,
           artifactsBucketName: artifactsBucketName,
-          pipelineName: "REPLACEME",
+          pipelineName: awsDevPipelineName,
           variables: [
             ("dev${serviceName}S3key" as String): s3Key, // Must use String, not GString. Map lookup results in null values with GString
           ],
@@ -100,7 +106,7 @@ buildConfig(
         pipelines.configureVariablesAndTrigger(
           artifactsRoleArn: artifactsRoleArn,
           artifactsBucketName: artifactsBucketName,
-          pipelineName: "REPLACEME",
+          pipelineName: awsProdPipelineName,
           variables: [
             ("prod${serviceName}S3key" as String): s3Key, // Must use String, not GString. Map lookup results in null values with GString
           ],
