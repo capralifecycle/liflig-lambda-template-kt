@@ -42,7 +42,7 @@
     <liflig.properties.version>2.20220923.232634</liflig.properties.version>
     <aws-lambda-events.version>3.11.0</aws-lambda-events.version>
     <kotlin-logging.version>2.1.23</kotlin-logging.version>
-    <logback.version>1.4.3</logback.version>
+    <logback.version>1.4.4</logback.version>
     <jackson.version>2.13.4</jackson.version>
     <logstash.version>7.2</logstash.version>
     <slf4j.version>2.0.3</slf4j.version>
