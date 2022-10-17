@@ -50,7 +50,7 @@
     <!--testing-->
     <assertj.version>3.23.1</assertj.version>
     <junit.version>5.9.1</junit.version>
-    <liflig-snapshot-test.version>1.20221001.135352</liflig-snapshot-test.version>
+    <liflig-snapshot-test.version>1.20221017.213712</liflig-snapshot-test.version>
   </properties>
 
   <repositories>
