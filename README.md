@@ -9,7 +9,8 @@ Liflig Delivery Platform based CDK setup
 
 Make sure you edit
 - [ ] Change `groupId` and `artifactId` in POM
-- [ ] Replace `Jenkinsfile` with contents of `Jenkinsfile.template`. Update variables at top and search for REPLACEME
+- [ ] Replace `Jenkinsfile` with contents of `Jenkinsfile.template`. Update variables at top
+- [ ] Replace `service.name` in [application.properties](src/main/resources-filtered/application.properties)
 - [ ] Update this README
 - [ ] Remove licence if not necessary (i.e. if this is private code)
 
