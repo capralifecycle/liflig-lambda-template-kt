@@ -12,7 +12,7 @@ Make sure you edit
 - [ ] Replace `Jenkinsfile` with contents of `Jenkinsfile.template`. Update variables at top
 - [ ] Replace `service.name` in [application.properties](src/main/resources-filtered/application.properties)
 - [ ] Update this README
-- [ ] Remove licence if not necessary (i.e. if this is private code)
+- [ ] Remove license if not necessary (i.e. if this is private code)
 
 ### Getting started
 TODO
