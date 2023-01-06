@@ -27,5 +27,5 @@ data class Build(
   val timestamp: String,
   val commit: String,
   val branch: String,
-  val buildNumber: Int,
+  val buildNumber: Int
 )

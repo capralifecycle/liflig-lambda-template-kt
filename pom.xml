@@ -42,15 +42,15 @@
     <liflig.properties.version>2.20221130.074331</liflig.properties.version>
     <aws-lambda-events.version>3.11.0</aws-lambda-events.version>
     <kotlin-logging.version>2.1.23</kotlin-logging.version>
-    <logback.version>1.4.5</logback.version>
-    <jackson.version>2.14.1</jackson.version>
+    <logback.version>1.4.0</logback.version>
+    <jackson.version>2.13.3</jackson.version>
     <logstash.version>7.2</logstash.version>
-    <slf4j.version>2.0.6</slf4j.version>
+    <slf4j.version>1.7.36</slf4j.version>
 
     <!--testing-->
-    <assertj.version>3.24.0</assertj.version>
-    <junit.version>5.9.1</junit.version>
-    <liflig-snapshot-test.version>1.20221201.142041</liflig-snapshot-test.version>
+    <assertj.version>3.23.1</assertj.version>
+    <junit.version>5.9.0</junit.version>
+    <liflig-snapshot-test.version>1.20220831.200250</liflig-snapshot-test.version>
   </properties>
 
   <repositories>
@@ -135,7 +135,7 @@
       <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
-    
+
     <!-- For testing JSON -->
     <dependency>
       <groupId>no.liflig</groupId>
