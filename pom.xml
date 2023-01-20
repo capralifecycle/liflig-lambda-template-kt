@@ -48,7 +48,7 @@
     <slf4j.version>2.0.6</slf4j.version>
 
     <!--testing-->
-    <assertj.version>3.24.1</assertj.version>
+    <assertj.version>3.24.2</assertj.version>
     <junit.version>5.9.2</junit.version>
     <liflig-snapshot-test.version>1.20230113.145707</liflig-snapshot-test.version>
   </properties>
