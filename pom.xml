@@ -47,7 +47,7 @@
     <kotlin-logging.version>2.1.23</kotlin-logging.version>
     <logback.version>1.4.7</logback.version>
     <slf4j.version>2.0.7</slf4j.version>
-    <jackson.version>2.15.0</jackson.version>
+    <jackson.version>2.15.1</jackson.version>
     <logstash.version>7.3</logstash.version>
 
     <!-- Testing-dependencies -->
