@@ -43,7 +43,7 @@
     <liflig-snapshot-test.version>1.20230514.161119</liflig-snapshot-test.version>
 
     <!-- App -->
-    <aws-lambda-events.version>3.11.1</aws-lambda-events.version>
+    <aws-lambda-events.version>3.11.2</aws-lambda-events.version>
     <kotlin-logging.version>2.1.23</kotlin-logging.version>
     <logback.version>1.4.7</logback.version>
     <slf4j.version>2.0.7</slf4j.version>
