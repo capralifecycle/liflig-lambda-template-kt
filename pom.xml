@@ -77,6 +77,24 @@
     </repository>
   </repositories>
 
+  <profiles>
+    <profile>
+      <id>jenkins-build</id>
+      <activation>
+        <property>
+          <name>env.BUILD_NUMBER</name>
+        </property>
+      </activation>
+      <properties>
+        <!--suppress UnresolvedMavenProperty -->
+        <build.commit>${env.GIT_COMMIT}</build.commit>
+        <!--suppress UnresolvedMavenProperty -->
+        <build.branch>${env.BRANCH_NAME}</build.branch>
+        <build.number>${env.BUILD_NUMBER}</build.number>
+      </properties>
+    </profile>
+  </profiles>
+
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
@@ -107,7 +125,7 @@
       <version>${logstash.version}</version>
     </dependency>
     <dependency>
-    <!-- Needed by logstash -->
+      <!-- Needed by logstash -->
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
       <version>${jackson.version}</version>
