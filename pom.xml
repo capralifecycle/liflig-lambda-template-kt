@@ -39,7 +39,7 @@
     <kotlin.version>1.9.10</kotlin.version>
 
     <!-- Liflig-dependencies -->
-    <liflig.properties.version>2.20231024.042336</liflig.properties.version>
+    <liflig.properties.version>2.20231101.035523</liflig.properties.version>
     <liflig-snapshot-test.version>1.20231027.013911</liflig-snapshot-test.version>
 
     <!-- App -->
