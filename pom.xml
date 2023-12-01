@@ -56,7 +56,7 @@
     <mockk.version>1.13.8</mockk.version>
 
     <!-- Maven -->
-    <spotless-maven-plugin.version>2.40.0</spotless-maven-plugin.version>
+    <spotless-maven-plugin.version>2.41.0</spotless-maven-plugin.version>
     <ktfmt.version>0.43</ktfmt.version>
   </properties>
 
