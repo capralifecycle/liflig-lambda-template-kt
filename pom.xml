@@ -51,7 +51,7 @@
     <logstash.version>7.4</logstash.version>
 
     <!-- Testing-dependencies -->
-    <assertj.version>3.25.1</assertj.version>
+    <assertj.version>3.25.3</assertj.version>
     <junit.version>5.10.1</junit.version>
     <mockk.version>1.13.9</mockk.version>
 
