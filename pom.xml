@@ -16,8 +16,7 @@
   <name>liflig-lambda-template-kt</name>
 
   <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <jdk.version>17</jdk.version>
 
     <!--
         IntelliJ default value for `maven.build.timestamp.format` is apparently `yyyyMMdd-HHmm`.
@@ -39,25 +38,25 @@
     <kotlin.version>1.9.22</kotlin.version>
 
     <!-- Liflig-dependencies -->
-    <liflig.properties.version>2.20240110.003306</liflig.properties.version>
-    <liflig-snapshot-test.version>1.20240110.001554</liflig-snapshot-test.version>
+    <liflig.properties.version>2.20240207.153507</liflig.properties.version>
+    <liflig-snapshot-test.version>1.20240207.123435</liflig-snapshot-test.version>
 
     <!-- App -->
     <aws-lambda-events.version>3.11.4</aws-lambda-events.version>
     <kotlin-logging.version>3.0.5</kotlin-logging.version>
     <logback.version>1.4.14</logback.version>
-    <slf4j.version>2.0.11</slf4j.version>
+    <slf4j.version>2.0.12</slf4j.version>
     <jackson.version>2.16.1</jackson.version>
     <logstash.version>7.4</logstash.version>
 
     <!-- Testing-dependencies -->
-    <assertj.version>3.25.1</assertj.version>
-    <junit.version>5.10.1</junit.version>
+    <assertj.version>3.25.3</assertj.version>
+    <junit.version>5.10.2</junit.version>
     <mockk.version>1.13.9</mockk.version>
 
     <!-- Maven -->
-    <spotless-maven-plugin.version>2.41.1</spotless-maven-plugin.version>
-    <ktfmt.version>0.43</ktfmt.version>
+    <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
+    <ktfmt.version>0.46</ktfmt.version>
   </properties>
 
   <repositories>
@@ -341,17 +340,6 @@
             </ktfmt>
           </kotlin>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.github.gantsign.maven</groupId>
-        <artifactId>ktlint-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <!-- Disable ktlint defined in the parent pom -->
-            <id>check</id>
-            <phase>none</phase>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
