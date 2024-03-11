@@ -54,7 +54,7 @@
     <!-- Testing-dependencies -->
     <assertj.version>3.25.3</assertj.version>
     <junit.version>5.10.2</junit.version>
-    <mockk.version>1.13.9</mockk.version>
+    <mockk.version>1.13.10</mockk.version>
 
     <!-- Maven -->
     <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
