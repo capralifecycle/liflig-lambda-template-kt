@@ -59,6 +59,7 @@
     <!-- Maven -->
     <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
     <ktfmt.version>0.46</ktfmt.version>
+    <sonar.version>3.10.0.2594</sonar.version>
   </properties>
 
   <repositories>
@@ -66,33 +67,56 @@
       <id>github</id>
       <url>https://maven.pkg.github.com/capralifecycle/*</url>
     </repository>
-
-    <!-- Needed for parent -->
-    <repository>
-      <id>cantara-releases</id>
-      <name>Cantara Release Repository</name>
-      <url>https://mvnrepo.cantara.no/content/repositories/releases/</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
   </repositories>
 
   <profiles>
     <profile>
-      <id>jenkins-build</id>
+      <id>ci-build</id>
       <activation>
         <property>
-          <name>env.BUILD_NUMBER</name>
+          <name>env.CI</name>
         </property>
       </activation>
       <properties>
         <!--suppress UnresolvedMavenProperty -->
-        <build.commit>${env.GIT_COMMIT}</build.commit>
+        <build.commit>${env.GIT_COMMIT_SHA}</build.commit>
         <!--suppress UnresolvedMavenProperty -->
         <build.branch>${env.BRANCH_NAME}</build.branch>
-        <build.number>${env.BUILD_NUMBER}</build.number>
+        <!--suppress UnresolvedMavenProperty -->
+        <build.number>${env.RUN_NUMBER}</build.number>
       </properties>
+    </profile>
+
+    <profile>
+      <id>sonarcloud</id>
+      <activation>
+        <property>
+          <name>env.SONARCLOUD_TOKEN</name>
+        </property>
+      </activation>
+      <properties>
+        <sonar.organization>capralifecycle</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.projectKey>capralifecycle_europris-m3-b2bcredit-adapter</sonar.projectKey>
+        <sonar.token>${env.SONARCLOUD_TOKEN}</sonar.token>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>${sonar.version}</version>
+            <executions>
+              <execution>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sonar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
   </profiles>
 

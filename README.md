@@ -9,10 +9,10 @@ Liflig Delivery Platform based CDK setup
 
 Make sure you edit
 - [ ] Change `groupId` and `artifactId` in POM
-- [ ] Replace `Jenkinsfile` with contents of `Jenkinsfile.template`. Update variables at top
+- [ ] Rename `.github/workflows/ci.yaml.template` to `ci.yaml`. Update variables at top
 - [ ] Replace `service.name` in [application.properties](src/main/resources-filtered/application.properties)
 - [ ] Update this README
-- [ ] Remove license if not necessary (i.e. if this is private code)
+- [ ] Remove LICENSE file and Readme's bottom License section if not necessary (i.e. if this is private code)
 
 ### Getting started
 TODO

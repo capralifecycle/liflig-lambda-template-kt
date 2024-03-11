@@ -1,0 +1,14 @@
+{
+  "version": "0.1",
+  "accountId": "<AWS build account id>",
+  "roleName": "github-actions-role",
+  "limitedRoleName": "github-actions-limited-role",
+  "artifactBucket": "<AWS build account artifact S3 bucket name>",
+  "ecrRepository": "<AWS build account ECR repository>",
+  "devPipelines": [
+    "<awsCodepipeline-apps-dev>"
+  ],
+  "prodPipelines": [
+    "<awsCodepipeline-apps-prod>"
+  ]
+}
