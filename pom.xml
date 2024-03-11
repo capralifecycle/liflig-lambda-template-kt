@@ -7,7 +7,7 @@
   <parent>
     <groupId>no.liflig</groupId>
     <artifactId>kotlin-parent</artifactId>
-    <version>1.20230322.182255</version>
+    <version>2.20240311.012224</version>
   </parent>
 
   <groupId>no.liflig.example</groupId>
@@ -16,7 +16,7 @@
   <name>liflig-lambda-template-kt</name>
 
   <properties>
-    <jdk.version>17</jdk.version>
+    <java.version>17</java.version>
 
     <!--
         IntelliJ default value for `maven.build.timestamp.format` is apparently `yyyyMMdd-HHmm`.
@@ -33,11 +33,9 @@
         See https://kotlinlang.org/docs/reference/code-style-migration-guide.html
     -->
     <kotlin.code.style>official</kotlin.code.style>
-    <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
+    <kotlin.compiler.jvmTarget>${java.version}</kotlin.compiler.jvmTarget>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     <kotlin.version>1.9.23</kotlin.version>
-    <maven.compiler.target>${jdk.version}</maven.compiler.target>
-    <maven.compiler.source>${jdk.version}</maven.compiler.source>
 
     <!-- Liflig-dependencies -->
     <liflig.properties.version>2.20240310.000417</liflig.properties.version>
