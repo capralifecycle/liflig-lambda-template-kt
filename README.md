@@ -1,6 +1,6 @@
 # Liflig Lambda Template Kotlin
 
-![Java Badge](https://img.shields.io/badge/java-11-blue?logo=java)
+![Java Badge](https://img.shields.io/badge/java-17-blue?logo=java)
 ![Kotlin Badge](https://img.shields.io/badge/kotlin--blue?logo=kotlin)
 
 ## Documentation
@@ -21,7 +21,7 @@ TODO
 
 You need to install:
 - Maven (or run maven through IntelliJ)
-- JDK 11
+- JDK 17
 
 #### Developer machine setup
 TODO
@@ -33,7 +33,7 @@ mvn verify
 ```
 
 ### Deploying
-TODO
+Push to master.
 
 ## License
-Apache Licence. See LICENCE file
+Apache 2.0 Licence. See LICENCE file
