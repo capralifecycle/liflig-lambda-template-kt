@@ -10,6 +10,7 @@ Liflig Delivery Platform based CDK setup
 Make sure you edit
 - [ ] Change `groupId` and `artifactId` in POM
 - [ ] Rename `.github/workflows/ci.yaml.template` to `ci.yaml`. Update variables at top
+- [.ldp.json](.ldp.json)
 - [ ] Replace `service.name` in [application.properties](src/main/resources-filtered/application.properties)
 - [ ] Update this README
 - [ ] Remove LICENSE file and Readme's bottom License section if not necessary (i.e. if this is private code)
