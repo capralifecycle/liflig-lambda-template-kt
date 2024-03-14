@@ -103,6 +103,7 @@ jobs:
         with:
           aws-s3-bucket-name: ${{ steps.config.outputs.artifactBucket }}
           target-path: "target/app.jar"
+          aws-s3-key-prefix: "builds/${{ env.S3_SERVICE_NAME }}/"
 
       - name: trigger development deployment pipelines
         uses: capralifecycle/actions-lib/trigger-deployment-pipeline@6eec40efec972ae86feb9dac823a34067f1d2384 # v1.3.0
