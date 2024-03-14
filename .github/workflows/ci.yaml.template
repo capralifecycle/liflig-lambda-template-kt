@@ -118,7 +118,7 @@ jobs:
           trigger-type: "artifact"
           # NOTE: The key passed to artifact-parameters will be the name of
           # the SSM parameter where the reference to the artifact is stored.
-          artifact-parameters: "dev${{ env.S3_SERVICE_NAME }}S3Key=${{ steps.upload-s3-artifact.outputs.aws-s3-key }}"
+          artifact-parameters: "dev${{ env.S3_SERVICE_NAME }}S3key=${{ steps.upload-s3-artifact.outputs.aws-s3-key }}"
 
       - name: trigger production deployment pipelines
         uses: capralifecycle/actions-lib/trigger-deployment-pipeline@6eec40efec972ae86feb9dac823a34067f1d2384 # v1.3.0
@@ -133,7 +133,7 @@ jobs:
           trigger-type: "artifact"
           # NOTE: The key passed to artifact-parameters will be the name of
           # the SSM parameter where the reference to the artifact is stored.
-          artifact-parameters: "prod${{ env.S3_SERVICE_NAME }}S3Key=${{ steps.upload-s3-artifact.outputs.aws-s3-key }}"
+          artifact-parameters: "prod${{ env.S3_SERVICE_NAME }}S3key=${{ steps.upload-s3-artifact.outputs.aws-s3-key }}"
 
       - uses: capralifecycle/actions-lib/slack-notify@6eec40efec972ae86feb9dac823a34067f1d2384 # v1.3.0
         # NOTE: We only want to be notified about failures on the default branch
