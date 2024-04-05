@@ -8,6 +8,7 @@
     <groupId>no.liflig</groupId>
     <artifactId>kotlin-parent</artifactId>
     <version>2.20240323.003025</version>
+    <relativePath/>
   </parent>
 
   <groupId>no.liflig.example</groupId>
