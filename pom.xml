@@ -39,13 +39,13 @@
     <kotlin.version>1.9.23</kotlin.version>
 
     <!-- Liflig-dependencies -->
-    <liflig.properties.version>2.20240401.001144</liflig.properties.version>
-    <liflig-snapshot-test.version>1.20240413.095534</liflig-snapshot-test.version>
+    <liflig.properties.version>2.20240422.184017</liflig.properties.version>
+    <liflig-snapshot-test.version>1.20240422.193421</liflig-snapshot-test.version>
 
     <!-- App -->
     <aws-lambda-events.version>3.11.5</aws-lambda-events.version>
     <kotlin-logging.version>3.0.5</kotlin-logging.version>
-    <logback.version>1.5.5</logback.version>
+    <logback.version>1.5.6</logback.version>
     <slf4j.version>2.0.13</slf4j.version>
     <jackson.version>2.17.0</jackson.version>
     <logstash.version>7.4</logstash.version>
