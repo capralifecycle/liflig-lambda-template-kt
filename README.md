@@ -8,7 +8,7 @@ This repo acts as a template for a lambda function based on Kotlin. The template
 Liflig Delivery Platform based CDK setup
 
 Make sure you edit
-- [ ] Change `groupId` and `artifactId` in POM
+- [ ] Change `groupId`, `artifactId` and `name` in POM
 - [ ] Rename `.github/workflows/ci.yaml.template` to `ci.yaml`. Update variables at top
 - [.ldp.json](.ldp.json)
 - [ ] Replace `service.name` in [application.properties](src/main/resources-filtered/application.properties)
