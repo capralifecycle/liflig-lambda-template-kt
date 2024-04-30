@@ -5,3 +5,4 @@ config_override/
 overrides.properties
 *log.json
 *.DS_Store
+dependency-reduced-pom.xml

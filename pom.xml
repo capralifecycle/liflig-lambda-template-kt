@@ -96,7 +96,7 @@
       <properties>
         <sonar.organization>capralifecycle</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.projectKey>capralifecycle_europris-m3-b2bcredit-adapter</sonar.projectKey>
+        <sonar.projectKey>capralifecycle_my_project_key_here</sonar.projectKey>
         <sonar.token>${env.SONARCLOUD_TOKEN}</sonar.token>
       </properties>
       <build>
@@ -243,8 +243,6 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml
-              </dependencyReducedPomLocation>
               <filters>
                 <!-- Excluding signed manifest files from dependencies -->
                 <filter>
