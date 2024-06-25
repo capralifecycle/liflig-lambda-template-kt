@@ -13,6 +13,7 @@ Make sure you edit
 - [ ] Rename `.github/workflows/ci.yaml.template` to `ci.yaml`. Update variables at top
 - [ ] Update [.ldp.json](.ldp.json)
 - [ ] Replace `service.name` in [application.properties](src/main/resources-filtered/application.properties)
+- [ ] Replace `no.liflig.example` package name in `src/main` and `src/test`
 - [ ] Update this README
 - [ ] Remove LICENSE file and Readme's bottom License section if not necessary (i.e. if this is private code)
 
