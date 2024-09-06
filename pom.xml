@@ -40,7 +40,7 @@
 
     <!-- Liflig-dependencies -->
     <liflig.properties.version>2.20240830.114316</liflig.properties.version>
-    <liflig-snapshot-test.version>1.20240827.180306</liflig-snapshot-test.version>
+    <liflig-snapshot-test.version>1.20240905.231604</liflig-snapshot-test.version>
 
     <!-- App -->
     <aws-lambda-events.version>3.13.0</aws-lambda-events.version>
