@@ -3,6 +3,6 @@
 target/
 config_override/
 overrides.properties
-*log.json
+/log.jsonl
 *.DS_Store
 dependency-reduced-pom.xml
