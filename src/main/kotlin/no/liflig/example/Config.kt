@@ -1,33 +1,51 @@
 package no.liflig.example
 
+import java.time.Instant
+import java.util.Properties
 import no.liflig.properties.intRequired
 import no.liflig.properties.loadProperties
-import no.liflig.properties.stringNotEmpty
 import no.liflig.properties.stringNotNull
 
 /**
- * Loads config using Liflig Properties
+ * Holds configuration of the lambda.
  *
- * @see <a href="https://github.com/capralifecycle/liflig-properties">Liflig Properties on
- *   Github</a>
+ * @see [Config.load]
  */
-object Config {
-  private val properties = loadProperties()
-
-  val build =
-      Build(
-          timestamp = properties.stringNotNull("build.timestamp"),
-          commit = properties.stringNotNull("build.commit"),
-          branch = properties.stringNotNull("build.branch"),
-          buildNumber = properties.intRequired("build.number"),
-      )
-
-  val exampleProp = properties.stringNotEmpty("example.prop")
+data class Config(
+    private val properties: Properties,
+    val buildInfo: BuildInfo = BuildInfo.from(properties),
+) {
+  companion object {
+    /**
+     * Creates a new instance based on `application.properties` and AWS Parameter Store (if
+     * available).
+     */
+    fun load() = Config(loadProperties())
+  }
 }
 
-data class Build(
-    val timestamp: String,
+data class BuildInfo(
+    val timestamp: Instant,
+    /** Git commit sha. */
     val commit: String,
+    /** Git branch. */
     val branch: String,
-    val buildNumber: Int,
-)
+    /** CI build number. */
+    val number: Int,
+) {
+  companion object {
+    /** Create [BuildInfo] based on keys in `application.properties`. */
+    fun from(properties: Properties) =
+        BuildInfo(
+            timestamp = Instant.parse(properties.stringNotNull("build.timestamp")),
+            commit = properties.stringNotNull("build.commit"),
+            branch = properties.stringNotNull("build.branch"),
+            number =
+                try {
+                  properties.intRequired("build.number")
+                } catch (ex: IllegalArgumentException) {
+                  0
+                },
+        )
+  }
+}

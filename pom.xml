@@ -19,9 +19,7 @@
   <properties>
     <java.version>17</java.version>
 
-    <!--
-        IntelliJ default value for `maven.build.timestamp.format` is apparently `yyyyMMdd-HHmm`.
-     -->
+    <!-- IntelliJ default value for `maven.build.timestamp.format` is apparently `yyyyMMdd-HHmm`. -->
     <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
 
     <build.commit>LOCAL</build.commit>
