@@ -200,9 +200,9 @@
       <resource>
         <directory>${project.basedir}/src/main/resources-filtered</directory>
         <!--
-        Ensure variables are replaced in defaults.properties
-        For more details, see:
-        https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html
+          Ensure variables are replaced in application.properties
+          For more details, see:
+          https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html
         -->
         <filtering>true</filtering>
       </resource>
