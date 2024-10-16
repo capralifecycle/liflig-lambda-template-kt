@@ -21,7 +21,7 @@ private val log = KotlinLogging.logger {}
  * `no.liflig.example.LambdaHandler::handle`.
  */
 class LambdaHandler(
-  private val config: Config = Config.load(),
+    private val config: Config = Config.load(),
 ) {
   init {
     log.info(append("buildInfo", config.buildInfo)) { "Starting lambda handler" }
