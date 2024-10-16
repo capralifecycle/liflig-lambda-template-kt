@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -14,7 +13,6 @@
   <groupId>no.liflig.example</groupId>
   <artifactId>liflig-lambda-template-kt</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>liflig-lambda-template-kt</name>
 
   <properties>
     <java.version>17</java.version>
@@ -28,8 +26,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!--
-        Make IntelliJ use preferred Code Style.
-        See https://kotlinlang.org/docs/reference/code-style-migration-guide.html
+      Make IntelliJ use preferred Code Style.
+      See https://kotlinlang.org/docs/reference/code-style-migration-guide.html
     -->
     <kotlin.code.style>official</kotlin.code.style>
     <kotlin.compiler.jvmTarget>${java.version}</kotlin.compiler.jvmTarget>
@@ -107,7 +105,6 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>${slf4j.version}</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
@@ -191,20 +188,18 @@
   </repositories>
 
   <build>
-    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
     <resources>
       <resource>
         <directory>${project.basedir}/src/main/resources</directory>
       </resource>
       <resource>
-        <directory>${project.basedir}/src/main/resources-filtered</directory>
         <!--
           Ensure variables are replaced in application.properties
           For more details, see:
           https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html
         -->
         <filtering>true</filtering>
+        <directory>${project.basedir}/src/main/resources-filtered</directory>
       </resource>
     </resources>
 
@@ -227,10 +222,10 @@
         </configuration>
         <executions>
           <execution>
-            <phase>package</phase>
             <goals>
               <goal>shade</goal>
             </goals>
+            <phase>package</phase>
             <configuration>
               <filters>
                 <!-- Excluding signed manifest files from dependencies -->
@@ -249,7 +244,7 @@
       </plugin>
 
       <!--
-        Enforces proper Maven dependency management.
+        Enforces proper Maven dependency management, to avoid dependency resolution errors at runtime.
         See https://liflig.atlassian.net/wiki/spaces/CALS/pages/59737059/Improving+dependency-management+in+Kotlin+projects+using+the+maven-enforcer-plugin#Plugin-Configuration
       -->
       <plugin>
@@ -292,10 +287,10 @@
           </execution>
           <execution>
             <id>jacoco-site</id>
-            <phase>package</phase>
             <goals>
               <goal>report</goal>
             </goals>
+            <phase>package</phase>
           </execution>
         </executions>
       </plugin>
@@ -306,10 +301,10 @@
         <version>1.2.1</version>
         <executions>
           <execution>
-            <phase>generate-resources</phase>
             <goals>
               <goal>write-project-properties</goal>
             </goals>
+            <phase>generate-resources</phase>
             <configuration>
               <outputFile>${project.build.outputDirectory}/pom.properties</outputFile>
             </configuration>
@@ -322,14 +317,6 @@
         <groupId>com.diffplug.spotless</groupId>
         <artifactId>spotless-maven-plugin</artifactId>
         <version>${spotless-maven-plugin.version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-            <phase>validate</phase>
-          </execution>
-        </executions>
         <configuration>
           <formats>
             <format>
@@ -352,8 +339,19 @@
             </ktfmt>
           </kotlin>
         </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <phase>validate</phase>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
+
+    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
   </build>
 
   <profiles>
@@ -395,10 +393,10 @@
             <version>${sonar.version}</version>
             <executions>
               <execution>
-                <phase>verify</phase>
                 <goals>
                   <goal>sonar</goal>
                 </goals>
+                <phase>verify</phase>
               </execution>
             </executions>
           </plugin>
