@@ -59,7 +59,7 @@
     <!-- Maven -->
     <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
     <ktfmt.version>0.46</ktfmt.version>
-    <sonar.version>3.11.0.3922</sonar.version>
+    <sonar.version>5.0.0.4389</sonar.version>
   </properties>
 
   <dependencyManagement>
