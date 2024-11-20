@@ -1,12 +1,10 @@
-target/
-config_override/
-overrides.properties
-/log.jsonl
-*.DS_Store
-dependency-reduced-pom.xml
+/overrides.properties
+/target/
+log.jsonl
+node_modules
+venv
 
-
-# All intelliJ
+# All IntelliJ
 .idea
 *.iml
 *.ipr
@@ -14,7 +12,7 @@ dependency-reduced-pom.xml
 out/
 atlassian-ide-plugin.xml
 
-## Except a whitelist of IntelliJ files
+# ...except a whitelist of IntelliJ files
 !.idea/codeStyles/codeStyleConfig.xml
 !.idea/codeStyles/Project.xml
 !.idea/encodings.xml
