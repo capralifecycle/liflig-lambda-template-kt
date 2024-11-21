@@ -1,5 +1,6 @@
 /overrides.properties
 /target/
+.flattened-pom.xml
 log.jsonl
 node_modules
 venv
