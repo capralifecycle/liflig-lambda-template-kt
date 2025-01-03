@@ -160,7 +160,6 @@
       <artifactId>kotlinx-serialization-json</artifactId>
     </dependency>
     <dependency>
-      <!-- Needed by logstash -->
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
     </dependency>
