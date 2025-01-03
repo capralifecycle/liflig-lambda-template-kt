@@ -3,10 +3,9 @@
 package no.liflig.example
 
 import com.amazonaws.services.lambda.runtime.events.SQSEvent
-import mu.KotlinLogging
-import net.logstash.logback.marker.Markers.append
+import no.liflig.logging.getLogger
 
-private val log = KotlinLogging.logger {}
+private val log = getLogger {}
 
 /**
  * [LambdaHandler.handle] is the entrypoint for AWS Lambda.
@@ -24,12 +23,18 @@ class LambdaHandler(
     private val config: Config = Config.load(),
 ) {
   init {
-    log.info(append("buildInfo", config.buildInfo)) { "Starting lambda handler" }
+    log.info {
+      addField("buildInfo", config.buildInfo)
+      "Starting lambda handler"
+    }
   }
 
   fun handle(sqsEvent: SQSEvent) {
     for (message in sqsEvent.records) {
-      log.info(append("messageBody", message.body)) { "Processing SQS message" }
+      log.info {
+        addRawJsonField("event", message.body)
+        "Processing SQS message"
+      }
     }
   }
 }

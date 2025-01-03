@@ -2,6 +2,8 @@ package no.liflig.example
 
 import java.time.Instant
 import java.util.Properties
+import kotlinx.serialization.Serializable
+import no.liflig.example.serialization.SerializableInstant
 import no.liflig.properties.intRequired
 import no.liflig.properties.loadProperties
 import no.liflig.properties.stringNotNull
@@ -24,8 +26,9 @@ data class Config(
   }
 }
 
+@Serializable // Serializable for logging
 data class BuildInfo(
-    val timestamp: Instant,
+    val timestamp: SerializableInstant,
     /** Git commit sha. */
     val commit: String,
     /** Git branch. */

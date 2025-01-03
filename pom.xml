@@ -26,14 +26,15 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <kotlin.version>2.0.21</kotlin.version>
+    <kotlin.version>2.1.0</kotlin.version>
     <java.version>17</java.version>
     <kotlin.compiler.jvmTarget>${java.version}</kotlin.compiler.jvmTarget>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
     <!-- Liflig -->
-    <liflig-properties.version>2.20241208.231112</liflig-properties.version>
+    <liflig-properties.version>2.20250103.140257</liflig-properties.version>
     <liflig-snapshot-test.version>1.20240905.231604</liflig-snapshot-test.version>
+    <liflig-logging.version>2.20250103.135253</liflig-logging.version>
 
     <!-- AWS -->
     <aws-lambda-events.version>3.14.0</aws-lambda-events.version>
@@ -43,7 +44,6 @@
     <jackson.version>2.18.2</jackson.version>
 
     <!-- Logging -->
-    <kotlin-logging.version>3.0.5</kotlin-logging.version>
     <slf4j.version>2.0.16</slf4j.version>
     <logback.version>1.5.15</logback.version>
     <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
@@ -141,6 +141,11 @@
       <artifactId>properties</artifactId>
       <version>${liflig-properties.version}</version>
     </dependency>
+    <dependency>
+      <groupId>no.liflig</groupId>
+      <artifactId>liflig-logging</artifactId>
+      <version>${liflig-logging.version}</version>
+    </dependency>
 
     <!-- AWS -->
     <dependency>
@@ -162,30 +167,27 @@
 
     <!-- Logging -->
     <dependency>
-      <groupId>io.github.microutils</groupId>
-      <artifactId>kotlin-logging-jvm</artifactId>
-      <version>${kotlin-logging.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
-    <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>${logback.version}</version>
       <scope>runtime</scope>
     </dependency>
+    <!-- JSON encoding of logs -->
     <dependency>
       <groupId>net.logstash.logback</groupId>
       <artifactId>logstash-logback-encoder</artifactId>
       <version>${logstash-logback-encoder.version}</version>
     </dependency>
+    <!-- Needed for if/else in logback.xml, which we use to separate local/production log formats -->
     <dependency>
-      <!-- Needed for if/else in logback.xml, which we use to separate local/production log formats -->
       <groupId>org.codehaus.janino</groupId>
       <artifactId>janino</artifactId>
       <version>${janino.version}</version>
+    </dependency>
+    <!-- Needed by liflig-properties when loading parameters from AWS -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
     </dependency>
 
     <!-- Testing -->
