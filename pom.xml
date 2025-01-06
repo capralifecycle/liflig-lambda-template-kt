@@ -32,9 +32,9 @@
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
     <!-- Liflig -->
-    <liflig-properties.version>2.20250103.140257</liflig-properties.version>
+    <liflig-properties.version>2.20250106.170957</liflig-properties.version>
+    <liflig-logging.version>2.20250106.170036</liflig-logging.version>
     <liflig-snapshot-test.version>1.20240905.231604</liflig-snapshot-test.version>
-    <liflig-logging.version>2.20250103.135253</liflig-logging.version>
 
     <!-- AWS -->
     <aws-lambda-events.version>3.14.0</aws-lambda-events.version>

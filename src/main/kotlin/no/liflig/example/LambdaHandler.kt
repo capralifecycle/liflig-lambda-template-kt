@@ -24,7 +24,7 @@ class LambdaHandler(
 ) {
   init {
     log.info {
-      addField("buildInfo", config.buildInfo)
+      field("buildInfo", config.buildInfo)
       "Starting lambda handler"
     }
   }
@@ -32,7 +32,7 @@ class LambdaHandler(
   fun handle(sqsEvent: SQSEvent) {
     for (message in sqsEvent.records) {
       log.info {
-        addRawJsonField("event", message.body)
+        rawJsonField("event", message.body)
         "Processing SQS message"
       }
     }
