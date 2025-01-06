@@ -14,7 +14,11 @@
   <if condition='isDefined("log.format.pretty") &amp;&amp; property("log.format.pretty").equals("true")'>
     <then>
       <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+          <!-- Writes object values from logging context as actual JSON (not escaped) -->
+          <mdcEntryWriter class="no.liflig.logging.LoggingContextJsonFieldWriter"/>
+        </encoder>
+
         <file>log.jsonl</file> <!-- jsonl extension since it's newline-delimited JSON (https://jsonlines.org/) -->
         <append>false</append>
       </appender>
@@ -42,6 +46,9 @@
     <else>
       <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+          <!-- Writes object values from logging context as actual JSON (not escaped) -->
+          <mdcEntryWriter class="no.liflig.logging.LoggingContextJsonFieldWriter"/>
+
           <!-- Apply to all logs. The service and version are important for some services like Datadog. -->
           <customFields>{"service":"${service.name}","version":"${service.version}"}</customFields>
         </encoder>
