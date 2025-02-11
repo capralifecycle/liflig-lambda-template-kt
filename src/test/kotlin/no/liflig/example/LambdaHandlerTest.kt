@@ -10,10 +10,10 @@ class LambdaHandlerTest {
     assertDoesNotThrow {
       // Our infra repo references our lambda handler by its full package name.
       // We use reflection here to verify that we find our handler at that path, and that it has a
-      // constructor with no parameters (as expected by AWS Lambda).
-      val handler = Class.forName("no.liflig.example.LambdaHandler")
-      handler.getMethod("handle", SQSEvent::class.java)
-      handler.getConstructor() // Empty constructor
+      // constructor with no parameters (as expected by the AWS Lambda runtime).
+      val handlerClass = Class.forName("no.liflig.example.LambdaHandler")
+      handlerClass.getMethod("handle", SQSEvent::class.java)
+      handlerClass.getConstructor() // Empty constructor
     }
   }
 
