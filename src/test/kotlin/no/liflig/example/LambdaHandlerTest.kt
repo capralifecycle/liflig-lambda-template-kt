@@ -6,7 +6,7 @@ import org.junit.jupiter.api.assertDoesNotThrow
 
 class LambdaHandlerTest {
   @Test
-  fun `finds handler function at path used in infra`() {
+  fun `finds handler at path used in infra`() {
     assertDoesNotThrow {
       // Our infra repo references our lambda handler by its full package name.
       // We use reflection here to verify that we find our handler at that path, and that it has a
