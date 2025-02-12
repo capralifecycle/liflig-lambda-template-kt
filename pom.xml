@@ -40,7 +40,7 @@
     <aws-lambda-events.version>3.14.0</aws-lambda-events.version>
 
     <!-- Serialization -->
-    <kotlinx-serialization.version>1.7.3</kotlinx-serialization.version>
+    <kotlinx-serialization.version>1.8.0</kotlinx-serialization.version>
     <jackson.version>2.18.2</jackson.version>
 
     <!-- Logging -->
@@ -69,6 +69,13 @@
 
   <dependencyManagement>
     <dependencies>
+      <!-- Liflig -->
+      <dependency>
+        <groupId>no.liflig</groupId>
+        <artifactId>liflig-logging</artifactId>
+        <version>${liflig-logging.version}</version>
+      </dependency>
+
       <!-- Serialization -->
       <dependency>
         <groupId>org.jetbrains.kotlinx</groupId>
@@ -144,7 +151,6 @@
     <dependency>
       <groupId>no.liflig</groupId>
       <artifactId>liflig-logging</artifactId>
-      <version>${liflig-logging.version}</version>
     </dependency>
 
     <!-- AWS -->
