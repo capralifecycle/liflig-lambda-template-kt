@@ -1,12 +1,12 @@
 package no.liflig.example
 
+import java.time.Instant
+import java.util.Properties
 import kotlinx.serialization.Serializable
 import no.liflig.example.serialization.SerializableInstant
 import no.liflig.properties.intRequired
 import no.liflig.properties.loadProperties
 import no.liflig.properties.stringNotNull
-import java.time.Instant
-import java.util.Properties
 
 /**
  * Holds configuration of the lambda.
