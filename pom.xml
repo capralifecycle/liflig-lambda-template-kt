@@ -37,7 +37,7 @@
     <liflig-snapshot-test.version>1.20240905.231604</liflig-snapshot-test.version>
 
     <!-- AWS -->
-    <aws-lambda-events.version>3.14.0</aws-lambda-events.version>
+    <aws-lambda-events.version>3.15.0</aws-lambda-events.version>
 
     <!-- Serialization -->
     <kotlinx-serialization.version>1.8.0</kotlinx-serialization.version>
