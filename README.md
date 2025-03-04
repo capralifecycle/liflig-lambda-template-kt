@@ -1,14 +1,15 @@
 # Liflig Lambda Template Kotlin
 
-![Java Badge](https://img.shields.io/badge/java-21-blue?logo=java)
-![Kotlin Badge](https://img.shields.io/badge/kotlin--blue?logo=kotlin)
+> [!WARNING]
+> Try the new Maven Archetype to quickly generate the project with placeholders filled in.
+> Visit https://github.com/capralifecycle/liflig-baseline-archetypes, follow the _Install_ section
+> and use then _Baselines → lambda-baseline-archetype_ command.
 
 ## Documentation
 
-This repo acts as a template for a lambda function based on Kotlin. The template Jenkinsfile matches a
-Liflig Delivery Platform based CDK setup
+This repo acts as a template for an AWS Lambda function written with Kotlin.
 
-Make sure you edit
+Make sure you edit:
 
 - [ ] Change `groupId`, `artifactId` and `name` in POM
 - [ ] Change `sonar.projectKey` in POM
