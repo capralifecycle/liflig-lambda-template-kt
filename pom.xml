@@ -47,7 +47,7 @@
     <slf4j.version>2.0.17</slf4j.version>
     <logback.version>1.5.17</logback.version>
     <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
-    <opentelemetry.version>1.47.0</opentelemetry.version>
+    <opentelemetry.version>1.48.0</opentelemetry.version>
     <janino.version>3.1.12</janino.version>
 
     <!-- Other -->
