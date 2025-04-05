@@ -34,7 +34,7 @@
     <!-- Liflig -->
     <liflig-properties.version>2.20250314.004846</liflig-properties.version>
     <liflig-logging.version>2.20250317.213444</liflig-logging.version>
-    <liflig-snapshot-test.version>1.20250323.050831</liflig-snapshot-test.version>
+    <liflig-snapshot-test.version>1.20250404.005827</liflig-snapshot-test.version>
 
     <!-- AWS -->
     <aws-lambda-events.version>3.15.0</aws-lambda-events.version>
