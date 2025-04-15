@@ -58,7 +58,7 @@
 
     <!-- Testing -->
     <assertj.version>3.27.3</assertj.version>
-    <junit.version>5.12.1</junit.version>
+    <junit.version>5.12.2</junit.version>
     <mockk.version>1.13.17</mockk.version>
 
     <!-- Maven plugins -->
