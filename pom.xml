@@ -41,7 +41,7 @@
 
     <!-- Serialization -->
     <kotlinx-serialization.version>1.8.1</kotlinx-serialization.version>
-    <jackson.version>2.18.3</jackson.version>
+    <jackson.version>2.19.0</jackson.version>
 
     <!-- Logging -->
     <slf4j.version>2.0.17</slf4j.version>
