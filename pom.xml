@@ -59,7 +59,7 @@
     <!-- Testing -->
     <assertj.version>3.27.3</assertj.version>
     <junit.version>5.12.2</junit.version>
-    <mockk.version>1.14.0</mockk.version>
+    <mockk.version>1.14.2</mockk.version>
 
     <!-- Maven plugins -->
     <spotless-maven-plugin.version>2.44.4</spotless-maven-plugin.version>
